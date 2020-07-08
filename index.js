@@ -87,7 +87,12 @@ const stepThroughCell = (row, column) => {
             continue
         }
         // remove a wall from either horizontals or verticals
-        
+        if(direction === "left") {
+            verticals[row][column - 1] = true
+        } else if (direction === "right") {
+            verticals[row][column] = true
+        }
+
     }
 
 
