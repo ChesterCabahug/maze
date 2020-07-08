@@ -1,7 +1,7 @@
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter
 
-const cellsHorizontal = 4
-const cellsVertical = 3
+const cellsHorizontal = 16
+const cellsVertical = 15
 const width = window.innerWidth 
 const height = window.innerHeight
 
@@ -214,12 +214,14 @@ Events.on(engine, "collisionStart", event => {
         const labels = ["ball", "goal"]
 
         if (labels.includes(collision.bodyA.label) && labels.includes(collision.bodyB.label)){
+            document.querySelector(".winner").classList.remove("hidden")
             world.gravity.y = 1
             world.bodies.forEach((body) => {
                 if(body.label === "wall"){
                     Body.setStatic(body, false)
                 }
             })
+
         }
     })
 })
