@@ -34,6 +34,22 @@ World.add(world, walls)
 
 
 // maze generation
+const shuffle = (arr) => {
+    let counter = arr.length
+
+    while (counter > 0) {
+        const index = Math.floor(Math.random() * counter)
+
+        counter--
+
+        const temp = arr[counter]
+        arr[counter] = arr[index]
+        arr[index] = temp
+    }
+
+    return arr
+}
+
 const grid = Array(cells).fill(null).map(() => Array(cells).fill(false))
 const verticals = Array(cells).fill(null).map(() => Array(cells - 1).fill(false))
 const horizontals = Array(cells - 1).fill(null).map(() => Array(cells).fill(false))
@@ -51,12 +67,13 @@ const stepThroughCell = (row, column) => {
     grid[row][column] = true
 
     // assemble randomly-ordered list neighbors
-    const neighbors = [
+    const neighbors = shuffle([
         [row - 1, column],
         [row, column + 1],
         [row + 1, column],
         [row, column -1 ]
-    ]
+    ])
+    
 
     // for each neighbor...
 
@@ -66,5 +83,4 @@ const stepThroughCell = (row, column) => {
     // visit that next cell
 }
 
-stepThroughCell(startRow, startColumn)
-console.log(grid)
+stepThroughCell(1, 1)
