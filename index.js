@@ -118,7 +118,25 @@ horizontals.forEach((row, rowIndex) => {
             columnIndex * unitLength + unitLength / 2,
             rowIndex * unitLength + unitLength,
             unitLength,
-            10, 
+            2, 
+            {
+                isStatic: true
+            }
+        )
+        World.add(world, wall)
+    })
+})
+
+verticals.forEach((row, rowIndex) => {
+    row.forEach((open, columnIndex) => {
+        if (open) {
+            return
+        }
+        const wall = Bodies.rectangle(
+            columnIndex * unitLength + unitLength,
+            rowIndex * unitLength + unitLength / 2,
+            2,
+            unitLength,
             {
                 isStatic: true
             }
