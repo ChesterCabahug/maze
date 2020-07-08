@@ -7,6 +7,7 @@ const height = 600
 const unitLength = width / cells
 
 const engine = Engine.create()
+engine.world.gravity.y = 0
 const {world} = engine
 const render = Render.create({
     element: document.body,
@@ -174,15 +175,15 @@ document.addEventListener("keydown", event => {
     const {x, y} = ball.velocity
     console.log(x, y)
     if (event.keyCode === 87) {
-        Body.setVelocity(ball, {x, y: y - 5})
+        Body.setVelocity(ball, {x, y: y - 2})
     }
     if (event.keyCode === 68) {
-        Body.setVelocity(ball, {x: x + 5, y})
+        Body.setVelocity(ball, {x: x + 2, y})
     }
     if (event.keyCode === 83) {
-        Body.setVelocity(ball, {x, y: y + 5})
+        Body.setVelocity(ball, {x, y: y + 2})
     }
     if (event.keyCode === 65) {
-        Body.setVelocity(ball, {x: x - 5 , y})
+        Body.setVelocity(ball, {x: x - 2 , y})
     }
 })
