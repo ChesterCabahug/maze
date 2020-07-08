@@ -43,10 +43,20 @@ const startColumn = Math.floor(Math.random() * cells)
 
 const stepThroughCell = (row, column) => {
     // If I visited  the cell at [row, col], then return
+    if(grid[row][column]){
+        return
+    }
 
     // mark this cell as visited
+    grid[row][column] = true
 
     // assemble randomly-ordered list neighbors
+    const neighbors = [
+        [row - 1, column],
+        [row, column + 1],
+        [row + 1, column],
+        [row, column -1 ]
+    ]
 
     // for each neighbor...
 
@@ -57,3 +67,4 @@ const stepThroughCell = (row, column) => {
 }
 
 stepThroughCell(startRow, startColumn)
+console.log(grid)
